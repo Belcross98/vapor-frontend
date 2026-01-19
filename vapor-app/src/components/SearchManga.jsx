@@ -2,10 +2,12 @@ import { useState } from "react";
 import "../styles/SearchManga.css";
 import useDebounce from "../customHooks/useDebounce";
 import { searchManga } from "../services/MangaApi";
+import { useNavigate } from "react-router-dom";
 
 function SearchManga() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
+  const navigate = useNavigate();
 
   const handleSearch = async (query) => {
     if (!query) {
@@ -20,7 +22,11 @@ function SearchManga() {
       console.error(errorText);
     }
   };
-  useDebounce(() => handleSearch(query), query, 1000);
+  useDebounce(() => handleSearch(query), query, 500);
+
+  const handleClick = (id) => {
+    navigate(`/Manga/${id}`);
+  };
 
   return (
     <div className="nav-search-container">
@@ -35,7 +41,11 @@ function SearchManga() {
       {results.length > 0 && (
         <div className="nav-search-results">
           {results.map((manga) => (
-            <div className="nav-search-results-element" key={manga.id}>
+            <div
+              className="nav-search-results-element"
+              key={manga.id}
+              onClick={() => handleClick(manga.id)}
+            >
               {manga.name}
             </div>
           ))}
