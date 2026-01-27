@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import StarRating from "react-star-ratings";
 import { createReview } from "../services/MangaApi";
-import "../styles/Review.css";
 
 function Review({ loadManga }) {
   const [comment, setComment] = useState("");
@@ -16,7 +15,7 @@ function Review({ loadManga }) {
     const { success, errorText, data } = await createReview(
       id,
       comment,
-      rating
+      rating,
     );
     if (success) {
       setComment("");
@@ -28,9 +27,10 @@ function Review({ loadManga }) {
   };
 
   return (
-    <div className="rate-container">
+    <div className="rate-container flex">
       <form className="rate-container-form" onSubmit={handleSubmit}>
         <textarea
+          className="bg-gray-100 text-gray-900"
           id="comment"
           name="comment"
           placeholder="Enter your comment"
@@ -46,7 +46,12 @@ function Review({ loadManga }) {
           numberOfStars={5}
           name="rating"
         />
-        <button type="submit">Rate</button>
+        <button
+          className="bg-blue-900 w-32 rounded-lg cursor-pointer"
+          type="submit"
+        >
+          Rate
+        </button>
       </form>
     </div>
   );

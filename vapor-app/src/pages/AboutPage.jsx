@@ -1,36 +1,49 @@
-
 function AboutPage() {
   return (
-    <div>
-      <h1>About MangaLib</h1> Welcome to MangaLib, your ultimate destination for
-      manga lovers! Whether you're a seasoned manga enthusiast or just starting
-      your journey into the world of manga, MangaLib is here to offer you a
-      rich, engaging experience. At MangaLib, we host a diverse collection of
-      mangas across various genres, ensuring that there's something for
-      everyone. From action-packed adventures to heartfelt dramas, our library
-      grows regularly, bringing you new titles and hidden gems every week. What
-      We Offer: Vast Manga Collection: Browse through a wide variety of mangas.
-      Whether you're into fantasy, romance, horror, or slice of life, our
-      collection has something to match your interests. User Ratings & Reviews:
-      We believe in the power of community! You can rate your favorite mangas on
-      a scale from 1-5 stars and share your thoughts with others through
-      detailed comments. Your opinions help guide others on their manga journey.
-      Discover New Titles: With our regularly updated manga listings and
-      personalized recommendations, discovering new titles has never been
-      easier. Interactive Community: Engage with other manga fans! Share
-      recommendations, discuss your favorite series, and leave reviews to help
-      fellow users discover the best reads. Join Us! As a user of MangaLib, you
-      not only get access to an extensive library but also become part of a
-      vibrant community of manga lovers. Your reviews and ratings help create an
-      active, engaging environment for everyone. Whether you're rating the
-      latest chapter of your favorite series or sharing your excitement about a
-      new manga discovery, MangaLib provides a platform where manga fans can
-      connect and thrive.{" "}
-      <div>
+    <div className="bg-gray-900 min-h-screen text-gray-200 py-12 px-6">
+      <h1 className="text-4xl md:text-5xl font-bold text-center mb-10">
+        About MangaLib
+      </h1>
+      <div className="flex flex-col md:flex-row gap-8 items-center max-w-4xl mx-auto">
+        <p className="md:w-1/2 text-lg md:text-xl leading-relaxed">
+          Welcome to{" "}
+          <span className="font-semibold text-indigo-400">MangaLib</span>, your
+          ultimate destination for manga lovers! Whether you're a seasoned manga
+          enthusiast or just starting your journey into the world of manga,
+          MangaLib is here to offer you a rich, engaging experience.
+          <br />
+          <br />
+          At MangaLib, we host a diverse collection of mangas across various
+          genres, ensuring that there's something for everyone. From
+          action-packed adventures to heartfelt dramas, our library grows
+          regularly, bringing you new titles and hidden gems every week.
+          <br />
+          <br />
+          <span className="font-semibold text-indigo-400">What We Offer:</span>
+          <br />
+          <strong>Vast Manga Collection:</strong> Browse through a wide variety
+          of mangas. Whether you're into fantasy, romance, horror, or slice of
+          life, our collection has something to match your interests.
+          <br />
+          <strong>User Ratings & Reviews:</strong> We believe in the power of
+          community! You can rate your favorite mangas on a scale from 1-5 stars
+          and share your thoughts with others through detailed comments.
+        </p>
+
+        <img
+          className="md:w-1/2 w-full rounded-xl shadow-lg object-cover"
+          src="https://4kwallpapers.com/images/wallpapers/one-piece-character-5120x2880-15328.jpeg"
+          alt="Some random Manga"
+        />
+      </div>
+
+      <p className="text-center text-lg md:text-xl mt-12 leading-relaxed font-light max-w-3xl mx-auto">
         Start Rating & Reviewing Today! Take part in rating and reviewing the
         mangas you've read and let others know about your favorite stories. Your
-        feedback makes MangaLib a richer place for manga lovers like you.
-      </div>
+        feedback makes{" "}
+        <span className="font-semibold text-indigo-400">MangaLib</span> a richer
+        place for manga lovers like you.
+      </p>
     </div>
   );
 }

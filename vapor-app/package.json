@@ -10,12 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "bootstrap": "^5.3.3",
+    "@tailwindcss/vite": "^4.1.18",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-rating": "^2.0.5",
     "react-router-dom": "^7.4.1",
-    "react-star-ratings": "^2.3.0"
+    "react-star-ratings": "^2.3.0",
+    "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",

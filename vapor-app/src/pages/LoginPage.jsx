@@ -1,5 +1,4 @@
 import { FormEvent, useContext, useState } from "react";
-import "../styles/LoginPage.css";
 import { useNavigate } from "react-router-dom";
 import { logIn } from "../services/MangaApi";
 import { globalContext } from "../context/context";

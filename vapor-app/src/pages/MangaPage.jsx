@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
-import "../styles/MangaPage.css";
 import Review from "../components/Review";
 import { deleteReview, getManga } from "../services/MangaApi";
 import useAsyncEffect from "../customHooks/useAsyncEffect";
+import { globalContext } from "../context/context";
 
 function MangaPage() {
+  const { navigationShow } = useContext(globalContext);
   const [manga, setManga] = useState(null);
   const { id } = useParams();
   const [error, setError] = useState("");
@@ -30,11 +31,13 @@ function MangaPage() {
 
   useAsyncEffect(loadManga, [id]);
   return manga ? (
-    <div className="manga-page">
-      <div className="manga-page-left">
+    <div
+      className={`flex text-gray-100 ${navigationShow ? "ml-80" : "ml-10"} mt-20  `}
+    >
+      <div className="">
         <img
           src={manga.mangaPictureURL == "" ? undefined : manga.mangaPictureURL}
-          className="manga-page-img"
+          className="w-80"
           alt={manga.name}
         />
         <div className="manga-page-left-rating">
@@ -43,7 +46,13 @@ function MangaPage() {
         {localStorage.getItem("accessToken") ? (
           <div className="manga-page-left-rate">
             <Review loadManga={loadManga} />
-            <button onClick={() => deleteRev(id)}>Delete Review</button>
+            <button
+              onClick={() => deleteRev(id)}
+              type="button"
+              className="bg-red-950 cursor-pointer rounded-lg w-32"
+            >
+              Delete Review
+            </button>
           </div>
         ) : (
           ""

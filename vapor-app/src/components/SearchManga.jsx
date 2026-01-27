@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "../styles/SearchManga.css";
 import useDebounce from "../customHooks/useDebounce";
 import { searchManga } from "../services/MangaApi";
 import { useNavigate } from "react-router-dom";
@@ -29,17 +28,19 @@ function SearchManga() {
   };
 
   return (
-    <div className="nav-search-container">
+    <div className="">
       <input
         spellCheck="false"
-        className="nav-search"
+        className={`bg-gray-100 text-gray-900 border rounded-full px-4
+                    w-64 focus:w-96
+                    transition-all duration-300 ease-in-out`}
         type="text"
         placeholder="Search mangas..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
       {results.length > 0 && (
-        <div className="nav-search-results">
+        <div className="flex flex-col gap-2 w-64">
           {results.map((manga) => (
             <div
               className="nav-search-results-element"
