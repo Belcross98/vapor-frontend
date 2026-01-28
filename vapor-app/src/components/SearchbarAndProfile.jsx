@@ -12,20 +12,26 @@ function SearchbarAndProfile() {
     setNavigationShow(true);
   }
   return (
-    <>
-      <div className="bg-gray-800 fixed z-40 w-full flex justify-between items-center">
-        {navigationShow ? (
-          <div></div>
-        ) : (
-          <img onClick={expandNav} className="w-4" src={menuIcon} />
-        )}
+    <div className="bg-gray-800 fixed z-40 w-full flex justify-between items-center px-4">
+      <div className="flex items-center gap-3">
+        {!navigationShow && (
+          <>
+            <img
+              onClick={expandNav}
+              className="w-4 cursor-pointer"
+              src={menuIcon}
+            />
 
-        <div className="flex gap-8 items-center">
-          <SearchManga />
-          <NavigationProfile />
-        </div>
+            <h1 className="text-gray-100 text-2xl font-bold">MangaLib</h1>
+          </>
+        )}
       </div>
-    </>
+
+      <div className="flex gap-8 items-center">
+        <SearchManga />
+        <NavigationProfile />
+      </div>
+    </div>
   );
 }
 

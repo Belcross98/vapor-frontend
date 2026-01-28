@@ -27,11 +27,7 @@ function HomePage() {
   useAsyncEffect(loadMangas, []);
 
   return (
-    <div className="bg-gray-900 min-h-screen text-white py-10 w-full px-6">
-      <h1 className="text-4xl md:text-5xl font-bold text-center mb-10">
-        MangaLib
-      </h1>
-
+    <div className="bg-gray-900 min-h-screen text-white py-20 w-full px-6">
       {error && <div className="text-red-500 text-center mb-6">{error}</div>}
 
       {data ? (

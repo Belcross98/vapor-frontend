@@ -18,9 +18,13 @@ function Navbar() {
         ${navigationShow ? "translate-x-0" : "-translate-x-full"}
       `}
     >
-      {/* Top: Logo + Close + Optional Search/Profile */}
       <div className="flex items-center justify-between p-4 border-b border-gray-700 min-h-16">
         <img src={logo} alt="Logo" className="h-10 w-auto object-contain" />
+        {navigationShow && (
+          <h1 className="text-gray-100 text-2xl font-bold flex justify-">
+            MangaLib
+          </h1>
+        )}
         <div className="flex items-center space-x-2">
           <button
             onClick={collapseNav}
