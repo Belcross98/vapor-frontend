@@ -22,41 +22,57 @@ function LoginPage() {
     }
   };
   return (
-    <>
-      <div className="login-form">
-        <h2>Login</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="username">Username</label>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to from-gray-900 via-gray-800 to-gray-900 px-4">
+      <div className="w-full max-w-md bg-gray-800 rounded-2xl shadow-xl p-8">
+        <h2 className="text-3xl font-bold text-white text-center mb-8">
+          Login to MangaLib
+        </h2>
+
+        <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+          <div>
+            <label className="block text-gray-300 mb-1">Username</label>
             <input
+              onChange={(e) => {
+                setUsername(e.target.value);
+              }}
               type="text"
-              id="username"
-              name="username"
-              placeholder="Enter your username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)} // Handle input changes
+              placeholder="Username"
+              className="w-full rounded-lg bg-gray-700 text-white px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500 transition"
             />
           </div>
-
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
+          <div>
+            <label className="block text-gray-300 mb-1">Password</label>
             <input
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
               type="password"
-              id="password"
-              name="password"
-              placeholder="Enter your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)} // Handle input changes
+              placeholder="••••••••"
+              className="w-full rounded-lg bg-gray-700 text-white px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500 transition"
             />
           </div>
-
-          <button className="form-button" type="submit">
-            Submit
+          <button
+            type="submit"
+            className="mt-4 bg-indigo-600 hover:bg-indigo-700 transition rounded-lg py-3 text-white font-semibold shadow-md"
+          >
+            Login
           </button>
+
+          {/* Extra */}
+          <p className="text-center text-gray-400 text-sm mt-4">
+            Don’t have an account?{" "}
+            <span className="text-indigo-400 hover:underline cursor-pointer">
+              Register
+            </span>
+          </p>
+          {errorMessage && (
+            <div className="fixed   text-red-600 px-6 py-3 rounded-xl shadow-lg z-50 animate-bounce">
+              {errorMessage}
+            </div>
+          )}
         </form>
-        {errorMessage && <div className="error-message">{errorMessage}</div>}
       </div>
-    </>
+    </div>
   );
 }
 

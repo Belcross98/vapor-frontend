@@ -15,19 +15,15 @@ function NavigationProfile() {
   }
   return (
     <>
-      <div className="navigation-profile" onClick={toggleShowProfile}>
-        <img
-          className={
-            isLoggedIn
-              ? "w-10"
-              : "navigation-profile-icon navigation-profile-icon-loggedin"
-          }
-          src={userIcon}
-        />
+      <div className="pl-2" onClick={toggleShowProfile}>
+        <img className={isLoggedIn ? "w-10" : "w-10"} src={userIcon} />
         {showProfile ? (
-          <div className="navigation-profile-container w-4">
-            <img className="navigation-profile-icon" src={userIcon} />
-            {localStorage.getItem("username") ?? "Guest"}
+          <div className="flex flex-col justify-center items-center absolute right-4 top-full mt-2 bg-gray-700 rounded-lg shadow-lg w-40">
+            {
+              <div className="">
+                {localStorage.getItem("username") ?? "Guest"}
+              </div>
+            }
             <LinkButton route={"/Register"} linkInnerText={"Register"} />
             {isLoggedIn ? (
               <LogOut />

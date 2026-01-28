@@ -15,7 +15,7 @@ function Register() {
     const { success, errorText, data } = await registerUser(
       email,
       username,
-      password
+      password,
     );
     if (success) {
       setIsLoggedIn(true);
@@ -26,53 +26,55 @@ function Register() {
   };
 
   return (
-    <>
-      <div className="login-form">
-        <h2>Register</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input
-              type="text"
-              id="email"
-              name="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="username">Username</label>
-            <input
-              type="text"
-              id="username"
-              name="username"
-              placeholder="Enter your username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </div>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to from-gray-900 via-gray-800 to-gray-900 px-4">
+      <div className="w-full max-w-md bg-gray-800 rounded-2xl shadow-xl p-8">
+        <h2 className="text-3xl font-bold text-white text-center mb-8">
+          Register
+        </h2>
 
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+          <div>
+            <label className="block text-gray-300 mb-1">Email</label>
             <input
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+              type="email"
+              placeholder="yourmail@gmail.com"
+              className="w-full rounded-lg bg-gray-700 text-white px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500 transition"
+            />
+          </div>
+          <div>
+            <label className="block text-gray-300 mb-1">Username</label>
+            <input
+              onChange={(e) => {
+                setUsername(e.target.value);
+              }}
+              type="text"
+              placeholder="Username"
+              className="w-full rounded-lg bg-gray-700 text-white px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500 transition"
+            />
+          </div>
+          <div>
+            <label className="block text-gray-300 mb-1">Password</label>
+            <input
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
               type="password"
-              id="password"
-              name="password"
-              placeholder="Enter your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              placeholder="••••••••"
+              className="w-full rounded-lg bg-gray-700 text-white px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500 transition"
             />
           </div>
-
-          <button className="form-button" type="submit">
-            Submit
+          <button
+            type="submit"
+            className="mt-4 bg-indigo-600 hover:bg-indigo-700 transition rounded-lg py-3 text-white font-semibold shadow-md"
+          >
+            Register
           </button>
         </form>
-
-        {errorMessage && <div className="error-message">{errorMessage}</div>}
       </div>
-    </>
+    </div>
   );
 }
 
