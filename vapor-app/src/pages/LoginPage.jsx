@@ -61,7 +61,10 @@ function LoginPage() {
           {/* Extra */}
           <p className="text-center text-gray-400 text-sm mt-4">
             Don’t have an account?{" "}
-            <span className="text-indigo-400 hover:underline cursor-pointer">
+            <span
+              onClick={() => navigator("/Register")}
+              className="text-indigo-400 hover:underline cursor-pointer"
+            >
               Register
             </span>
           </p>

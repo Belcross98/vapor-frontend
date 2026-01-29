@@ -32,54 +32,71 @@ function MangaPage() {
   useAsyncEffect(loadManga, [id]);
   return manga ? (
     <div
-      className={`flex text-gray-100 ${navigationShow ? "ml-80" : "ml-10"} mt-20  `}
+      className={`min-h-screen text-gray-100 px-6 pt-20 transition-all
+      ${navigationShow ? "ml-80" : "ml-10"}
+    `}
     >
-      <div className="">
-        <img
-          src={manga.mangaPictureURL == "" ? undefined : manga.mangaPictureURL}
-          className="w-80"
-          alt={manga.name}
-        />
-        <div className="manga-page-left-rating">
-          Average Rating: {manga.averageRating || "N/A"}
-        </div>
-        {localStorage.getItem("accessToken") ? (
-          <div className="manga-page-left-rate">
-            <Review loadManga={loadManga} />
-            <button
-              onClick={() => deleteRev(id)}
-              type="button"
-              className="bg-red-950 cursor-pointer rounded-lg w-32"
-            >
-              Delete Review
-            </button>
+      <div className="flex flex-col lg:flex-row gap-10 max-w-6xl">
+        {/* LEFT SIDE */}
+        <div className="flex flex-col items-center lg:items-start gap-6 w-full lg:w-1/3">
+          <img
+            src={manga.mangaPictureURL || undefined}
+            alt={manga.name}
+            className="w-72 rounded-xl shadow-lg"
+          />
+
+          <div className="bg-gray-800 px-4 py-2 rounded-lg text-sm">
+            ⭐ Average Rating: {manga.averageRating || "N/A"}
           </div>
-        ) : (
-          ""
-        )}
-      </div>
-      <div className="manga-page-right">
-        <span className="manga-page-right-title">{manga.name}</span>
-        <span className="manga-page-right-description">
-          <div className="manga-page-right-description-text">
-            {manga.description}
-          </div>
-        </span>
-        <div className="manga-page-right-revlist">
-          {manga.reviews.map((review) => (
-            <div className="manga-page-right-revlist-rev">
-              <span>Author: {review.createdBy}</span>
-              <span>Rating: {review.rating}</span>
-              <span>Comment: {review.comment}</span>
+
+          {localStorage.getItem("accessToken") && (
+            <div className="flex flex-col gap-3 w-full">
+              <Review loadManga={loadManga} />
+
+              <button
+                onClick={() => deleteRev(id)}
+                className="bg-red-600 hover:bg-red-700 transition rounded-lg py-2 text-white font-semibold"
+              >
+                Delete Review
+              </button>
             </div>
-          ))}
+          )}
+        </div>
+
+        {/* RIGHT SIDE */}
+        <div className="flex flex-col gap-6 w-full lg:w-2/3">
+          <h1 className="text-4xl font-bold">{manga.name}</h1>
+
+          <p className="text-gray-300 leading-relaxed">{manga.description}</p>
+
+          {/* REVIEWS */}
+          <div className="flex flex-col gap-4 mt-4">
+            <h2 className="text-2xl font-semibold">Reviews</h2>
+
+            {manga.reviews.length === 0 && (
+              <p className="text-gray-400">No reviews yet.</p>
+            )}
+
+            {manga.reviews.map((review) => (
+              <div
+                key={review.id}
+                className="bg-gray-800 rounded-xl p-4 flex flex-col gap-1 shadow"
+              >
+                <span className="font-semibold text-indigo-400">
+                  {review.createdBy}
+                </span>
+
+                <span className="text-sm">⭐ {review.rating}/10</span>
+
+                <p className="text-gray-300">{review.comment}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
   ) : (
-    <>
-      <h1>Loading...</h1>
-    </>
+    <div className="pt-32 text-center text-gray-300">Loading...</div>
   );
 }
 
