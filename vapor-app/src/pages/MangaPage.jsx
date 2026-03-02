@@ -86,7 +86,7 @@ function MangaPage() {
                   {review.createdBy}
                 </span>
 
-                <span className="text-sm">⭐ {review.rating}/10</span>
+                <span className="text-sm">⭐ {review.rating}/5</span>
 
                 <p className="text-gray-300">{review.comment}</p>
               </div>
